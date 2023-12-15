@@ -7,8 +7,7 @@ class Person(object):
     def __init__(self, arrive_time, is_special=False) -> None:
         self.arrive_time = arrive_time
         self.is_special = is_special
-        self.ride_time_to_seolip = (1.5848929430742282, 0.7955861513566723, 541.7394666657118,
-                                    377.26053333428825)  # beta분포, alpha, beta, location, scale, 설입까지 버스 타는 시간
+        self.ride_time_to_seolip = (1.5848929430742282, 0.7955861513566723, 541.7394666657118, 377.26053333428825)  # beta분포, alpha, beta, location, scale, 설입까지 버스 타는 시간
         self.bus_count = 0
         self.wait_time = 0
         self.total_time = 0
@@ -41,15 +40,13 @@ class BusSimulation(object):
         self.adding_rate = (1, 44.40634005763689)  # 지수분포, 사람 오는 주기
         self.adding_randvar = {0: 0, 1: 0.777142857, 2: 0.954285714, 3: 0.985714285, 4: 0.991428571, 5: 0.997142857,
                                6: 1}  # 한번에 오는 비율(누적분포)
-        self.departing_rate = (
-        3.292105716403076, -13.287827135466838, 119.17062480056617)  # chi2분포 자유도값, location, scale, 이탈 주기
+        self.departing_rate = (3.292105716403076, -13.287827135466838, 119.17062480056617)  # chi2분포 자유도값, location, scale, 이탈 주기
         self.departing_randvar = {0: 0, 1: 0.96875, 2: 1}  # 이탈 비율 (누적분포)
 
         # 돌리면서 필요한 변수 - 돌리면서 넣어야 하는 변수
         self.arrive_period_5516 = (20.005584766647246, -406.20303832870525, 54.699676358259936)  # chi2분포, 5516 도착주기
         self.ride_rate_5516 = 194 / 663  # 5516 타는 비율
-        self.arrive_period_chago = (
-        16.98237077685359, -673.7165670743836, 81.58805945154745)  # 감마분포 a값, location값, scale값, 차고지버스 도착주기
+        self.arrive_period_chago = (16.98237077685359, -673.7165670743836, 81.58805945154745)  # 감마분포 a값, location값, scale값, 차고지버스 도착주기
         self.ride_rate_chago = 71 / 294  # 차고지 타는 비율
         self.arrive_period_5511 = (17.530120930815443, 610.2002236846756, 146.12021373027414)  # t분포, 5511 도착주기
         self.no_leftover = 0.42  # 다 타는 비율
