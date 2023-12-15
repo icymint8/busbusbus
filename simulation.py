@@ -16,9 +16,7 @@ class Person(object):
         if self.is_special:
             self.bus_count += 1
             self.wait_time += time - self.arrive_time
-            self.total_time = self.wait_time + round(
-                np.random.default_rng().beta(self.ride_time_to_seolip[0], self.ride_time_to_seolip[1]) *
-                self.ride_time_to_seolip[3] + self.ride_time_to_seolip[2])
+            self.total_time = self.wait_time + round(np.random.default_rng().beta(self.ride_time_to_seolip[0], self.ride_time_to_seolip[1]) * self.ride_time_to_seolip[3] + self.ride_time_to_seolip[2])
 
     def couldnt_ride_5511(self):
         if self.is_special:
@@ -38,8 +36,7 @@ class BusSimulation(object):
 
         # 돌리면서 필요한 변수 - 처음 돌릴때도 넣어야 하는 변수
         self.adding_rate = (1, 44.40634005763689)  # 지수분포, 사람 오는 주기
-        self.adding_randvar = {0: 0, 1: 0.777142857, 2: 0.954285714, 3: 0.985714285, 4: 0.991428571, 5: 0.997142857,
-                               6: 1}  # 한번에 오는 비율(누적분포)
+        self.adding_randvar = {0: 0, 1: 0.777142857, 2: 0.954285714, 3: 0.985714285, 4: 0.991428571, 5: 0.997142857, 6: 1}  # 한번에 오는 비율(누적분포)
         self.departing_rate = (3.292105716403076, -13.287827135466838, 119.17062480056617)  # chi2분포 자유도값, location, scale, 이탈 주기
         self.departing_randvar = {0: 0, 1: 0.96875, 2: 1}  # 이탈 비율 (누적분포)
 
@@ -54,8 +51,7 @@ class BusSimulation(object):
         self.ride_rate_2029 = (7347376.22191485, 0.9007288565261925, 0.0693921890903089)  # t분포, 20-29분 타는 비율
         self.ride_rate_3039 = (0.9165266106442578, 0.1360202861868794)  # 정규분포, 30-39분 타는 비율
 
-        self.bus_lane = [Person(18000) for _ in
-                         range(round(self.initial_waiting[0] + np.random.exponential(self.initial_waiting[1])))]
+        self.bus_lane = [Person(18000) for _ in range(round(self.initial_waiting[0] + np.random.exponential(self.initial_waiting[1])))]
 
     def calculate_distance(self, kind) -> float:
         ''' 
@@ -186,8 +182,7 @@ class BusSimulation(object):
                     if all_ride_decide > 0.58:
                         depart_ratio = 1
                     else:
-                        depart_ratio = 1 - (
-                                    np.random.default_rng().exponential(self.leftover_rate[1]) + self.leftover_rate[0])
+                        depart_ratio = 1 - np.random.default_rng().exponential(self.leftover_rate[1]) + self.leftover_rate[0]
                 if depart_ratio < 0:
                     depart_ratio = 0
                 elif depart_ratio > 1:
